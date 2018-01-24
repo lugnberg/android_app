@@ -1,3 +1,5 @@
 # android_app
-Minimalistic and meditative app to quickly reconnect with nature and calm down in stressful situations.
-![alt text](https://github.com/lugnberg/android_app/blob/master/app/src/main/res/drawable/m2.jpg)
+minimalistic and meditative app to find calm down in stressful situations.
+<p align="center">
+  <img src="https://github.com/lugnberg/android_app/blob/master/app/src/main/res/drawable/m2.jpg" width="500">
+</p>
