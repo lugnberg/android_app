@@ -15,8 +15,6 @@ import static android.net.wifi.WifiConfiguration.Status.strings;
 public class MainActivity extends AppCompatActivity {
     MediaPlayer mp;
     boolean pausePlay;
-    Pauser p;
-    View v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,33 +24,29 @@ public class MainActivity extends AppCompatActivity {
         mp.start();
         mp.setLooping(true);
         pausePlay = false;
-        p = new Pauser(pausePlay);
         Log.i("Pauser", "Pauser object created");
-        pause();
         Log.i("onCreate", "onCreate finished successfully");
-
-
     }
-    protected void pause() {
-        while(true) {
-            Log.i("while loop", "entered");
-            pausePlay = p.getPauseFlag();
-            
-            if (pausePlay && mp.isPlaying()) {
-                mp.pause();
-            }
-            if (!pausePlay && !mp.isPlaying()) {
-                mp.start();
-            }
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+    public void pause(View w) {
+        pausePlay = pausePlay ?  false : true;
+        if(mediaPause(pausePlay)){
+            mp.pause();
+            Log.i("PAUSE METHOD", "Media was paused");
+        } else {
+            mp.start();
+            Log.i("PAUSE METHOD", "Media was restarted");
         }
     }
 
-    public void togglePauseFlag(View w) {
-        p.toggleFlag();
+    protected boolean mediaPause(boolean flag) {
+        Log.i("Media pauser", "executed");
+        if (flag && mp.isPlaying()) {
+            mp.pause();
+        }
+        if (!flag && !mp.isPlaying()) {
+            mp.start();
+        }
+        return flag;
     }
 }

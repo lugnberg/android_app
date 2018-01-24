@@ -20,13 +20,14 @@
             android:clickable="true"
             android:contentDescription="@string/img_des"
             android:cropToPadding="true"
+            android:focusable="true"
             android:focusableInTouchMode="true"
-            android:onClick="togglePauseFlag"
+            android:onClick="pause"
             android:scaleType="centerCrop"
             android:visibility="visible"
-            app:srcCompat="@drawable/m"
+            app:srcCompat="@drawable/m2r"
             tools:layout_editor_absoluteX="193dp"
-            tools:layout_editor_absoluteY="1dp" android:focusable="true"/>
+            tools:layout_editor_absoluteY="1dp" />
     </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
