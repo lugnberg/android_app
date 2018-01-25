@@ -13,9 +13,11 @@ import android.view.View;
 import static android.net.wifi.WifiConfiguration.Status.strings;
 
 public class MainActivity extends AppCompatActivity {
-    MediaPlayer mp;
-    boolean pausePlay;
+    /** Private attributes */
+    private MediaPlayer mp;
+    private boolean pausePlay;
 
+    /** Default onCreate with added mediaplayer start, looping and log print to command line. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
         Log.i("Pauser", "Pauser object created");
         Log.i("onCreate", "onCreate finished successfully");
     }
-
+    /**
+     * Method to toggle the pause flag, call 'mediaPause' to evaluate state and make the
+     * media player to switch between pause and play.
+     * The method is called from 'activity_main.xml' when the imageViews' onClick is triggered.
+     */
     public void pause(View w) {
         pausePlay = pausePlay ?  false : true;
         if(mediaPause(pausePlay)){
@@ -39,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /** Evaluates the mediaplayers' state and makes it switch between pause and play. Play is the
+     *  new state if the player is paused and reversed.
+     */
     protected boolean mediaPause(boolean flag) {
         Log.i("Media pauser", "executed");
         if (flag && mp.isPlaying()) {
